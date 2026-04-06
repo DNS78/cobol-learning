@@ -1,0 +1,23 @@
+  IDENTIFICATION DIVISION.
+       PROGRAM-ID. INVOICE.
+
+       ENVIRONMENT DIVISION.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-PRICE         PIC 9(5)V99 VALUE 299.99.
+       01 WS-QUANTITY      PIC 9(3)    VALUE 5.
+       01 WS-TOTAL         PIC 9(7)V99 VALUE 0.
+       01 WS-TAX           PIC 9(5)V99 VALUE 0.
+       01 WS-GRAND-TOTAL   PIC 9(7)V99 VALUE 0.
+
+       PROCEDURE DIVISION.
+           MULTIPLY WS-PRICE BY WS-QUANTITY GIVING WS-TOTAL
+           MULTIPLY WS-TOTAL BY 0.21 GIVING WS-TAX
+           ADD WS-TOTAL WS-TAX GIVING WS-GRAND-TOTAL
+           DISPLAY 'Price per unit : ' WS-PRICE
+           DISPLAY 'Quantity       : ' WS-QUANTITY
+           DISPLAY 'Subtotal       : ' WS-TOTAL
+           DISPLAY 'Tax (21%)      : ' WS-TAX
+           DISPLAY 'Grand Total    : ' WS-GRAND-TOTAL
+           STOP RUN.
